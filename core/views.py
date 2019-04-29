@@ -23,6 +23,7 @@ class ToDoViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
+
         async_to_sync(channel_layer.group_send)(
             'index',
             {'type': 'chat_message',
