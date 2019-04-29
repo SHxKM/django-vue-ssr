@@ -1,0 +1,5 @@
+SECRET_KEY=verysecretstringwithoutquotes
+ALLOWED_HOSTS=*,
+PRODUCTION=false //set to true in your production environment
+HEROKU_BACKEND_API_URL=yourHerokuBackendDjangoAppURL/api
+LOCAL_API_URL=yourLocalBackendDjangoAppURL/api
