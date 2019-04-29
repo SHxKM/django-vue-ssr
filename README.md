@@ -1,4 +1,5 @@
-# Django Nuxt SSR
+## Django Nuxt SSR (backend repo)
+
 ### TL;DR
 
 A simple to-do app built with Django REST framework, Nuxt.js, and Tailwind.
@@ -22,25 +23,5 @@ The frontend is where it gets more interesting. Unlike its v1 counterpart writte
 
 ### Heroku
 
-At least at the time this repo was made public, deployment to Heroku was not exactly a breeze. 
-
-Attempts to push the entire repo as a single app [had failed](https://github.com/SHxKM/django-vue-ssr/issues/3), 
-and I'm currently pushing the same source-code to two Heroku apps, and setting the `web:` Procfile directive 
-dynamically using environment variables.
-
-It certainly can be argued that *this is how it's supposed to work*, and this single repo structure does make 
-things a little more involved. Some would say this project should really be two repos (backend and frontend),
- but I am determined to look for ways to ship this is a single Heroku app, if only for education-purposes.
-
-See the [Procfile](https://github.com/SHxKM/django-vue-ssr/blob/master/Procfile), which utilizes environment variables to
- decide which `web:` command to run.
-
-#### Procfile-related envs for `backend`:
-
-`WEB_PREFIX`: `cd api`
-
-`WEB`: `gunicorn api.wsgi`
-
-#### Procfile-related envs for `frontend`:
-
-`WEB`: `npm run start`
+After many failed attempts to deploy the codebase as a single repository, I've
+ finally came to the conclusion that it's not only wrong, but also quite cumbersome.
