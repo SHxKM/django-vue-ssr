@@ -135,8 +135,6 @@ if not DEBUG:
     django_heroku.settings(locals())
     DISABLE_COLLECTSTATIC = 0
 
-MAX_CONN_AGE = 30
-
 # should DRY this
 if DEBUG:
     CHANNEL_LAYERS = {
