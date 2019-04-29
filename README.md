@@ -1,5 +1,7 @@
 ## Django Nuxt SSR (backend repo)
 
+The frontend repo can be found [here](https://github.com/SHxKM/django-nuxt-ssr-front).
+
 ### TL;DR
 
 A simple to-do app built with Django REST framework, Nuxt.js, and Tailwind.
