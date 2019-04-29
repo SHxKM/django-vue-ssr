@@ -34,5 +34,9 @@ It can serve as a general template, but is not to be relied upon to utilize best
 
 ### Heroku
 
-After many failed attempts to deploy the codebase as a single repository, I've
- finally came to the conclusion that it's not only wrong, but also quite cumbersome.
+Deployment should be straightforward, given the `.env` files are correctly filled in both repositories.
+ The backend Heroku app uses the `python` buildpack, and the frontend one depends on the `nodejs` one.
+
+
+(After many failed attempts to deploy the codebase as a single repository, I've
+ finally came to the conclusion that it's not only wrong, but also quite impossible.) 
