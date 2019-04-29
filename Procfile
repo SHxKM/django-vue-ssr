@@ -1,2 +1,2 @@
-release: cd api && python manage.py migrate
+release: python manage.py migrate
 web: daphne api.asgi:application
