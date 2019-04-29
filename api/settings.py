@@ -70,7 +70,6 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'api.wsgi.application'
 ASGI_APPLICATION = 'api.routing.application'
 
 

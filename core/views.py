@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 
+channel_layer = get_channel_layer()
 
 # Create your views here.
 class ToDoViewSet(viewsets.ModelViewSet):
@@ -22,8 +23,6 @@ class ToDoViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-
-        channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(
             'index',
             {'type': 'chat_message',
@@ -39,7 +38,6 @@ class ToDoViewSet(viewsets.ModelViewSet):
         if instance_id == 1:
             return Response(data={'id': instance_id}, status=status.HTTP_401_UNAUTHORIZED)
         else:
-            channel_layer = get_channel_layer()
             async_to_sync(channel_layer.group_send)(
                 'index',
                 {'type': 'chat_message',
