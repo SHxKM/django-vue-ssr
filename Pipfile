@@ -4,9 +4,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
+black = ">=19.1.1b"
 
 [packages]
-django = "*"
+django = ">=2.2.2"
 django-rest-framework = "*"
 pip = "*"
 python-decouple = "*"
@@ -16,6 +18,10 @@ gunicorn = "*"
 whitenoise = "==4.0"
 channels = "*"
 channels-redis = "*"
+twisted = ">=19.2.1"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
