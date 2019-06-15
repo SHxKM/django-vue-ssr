@@ -52,7 +52,7 @@ MIDDLEWARE = [
 
 # add this block below MIDDLEWARE
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = ["*"]
+CORS_ORIGIN_WHITELIST = ["https://*"]
 
 ROOT_URLCONF = "api.urls"
 
