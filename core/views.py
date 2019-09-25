@@ -14,37 +14,38 @@ class ToDoViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows messages to be viewed or edited.
     """
-    queryset = ToDoItem.objects.all().order_by('-created_at')
+
+    queryset = ToDoItem.objects.all().order_by("-created_at")
     serializer_class = ToDoItemSerializer
 
-
     def create(self, request, *args, **kwargs):
+        from django.db import close_old_connections
+
+        close_old_connections()
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
 
         async_to_sync(channel_layer.group_send)(
-            'index',
-            {'type': 'chat_message',
-             'message': "do_update",
-             }
+            "index", {"type": "chat_message", "message": "do_update"}
         )
 
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
         instance_id = instance.id
         if instance_id == 1:
-            return Response(data={'id': instance_id}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response(
+                data={"id": instance_id}, status=status.HTTP_401_UNAUTHORIZED
+            )
         else:
             async_to_sync(channel_layer.group_send)(
-                'index',
-                {'type': 'chat_message',
-                 'message': "do_update",
-                 }
+                "index", {"type": "chat_message", "message": "do_update"}
             )
             self.perform_destroy(instance)
-        return Response(data={'id': instance_id}, status=status.HTTP_200_OK)
+        return Response(data={"id": instance_id}, status=status.HTTP_200_OK)
 
