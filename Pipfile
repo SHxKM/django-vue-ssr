@@ -18,7 +18,7 @@ gunicorn = "*"
 whitenoise = "==4.0"
 channels = "*"
 channels-redis = "*"
-twisted = "==19.2.1"
+twisted = "==19.7.0"
 
 [requires]
 python_version = "3.7"
