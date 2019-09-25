@@ -21,6 +21,7 @@ class ToDoViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         from django.db import close_old_connections
 
+        # this isn't needed if you're not using Channels 2
         close_old_connections()
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
